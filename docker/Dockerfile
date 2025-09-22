@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM artifactorycn.netcracker.com:17064/golang:1.25.1-alpine3.22 as builder
+FROM golang:1.25.1-alpine3.22 as builder
 
 WORKDIR /workspace
 
@@ -17,7 +17,7 @@ COPY ./ .
 # Build
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o console ./cmd/console
 
-FROM artifactorycn.netcracker.com:17064/alpine:3.22.1
+FROM alpine:3.22.1
 
 WORKDIR /usr/local/bin
 
