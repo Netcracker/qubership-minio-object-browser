@@ -4,8 +4,6 @@ permissions:
   packages: write
   actions: read
 on:
-  release:
-    types: [created]
   push:
     branches:
       - '**'
