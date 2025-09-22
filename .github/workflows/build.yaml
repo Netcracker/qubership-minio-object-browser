@@ -43,7 +43,7 @@ jobs:
       fail-fast: false
       matrix:
         component:
-          - name: qubership-deployment-status-provisioner
+          - name: qubership-minio-object-browser
             file: docker/Dockerfile
             context: .
     runs-on: ubuntu-latest
