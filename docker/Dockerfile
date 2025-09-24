@@ -23,10 +23,6 @@ WORKDIR /usr/local/bin
 
 COPY --from=builder --chown=1000 /workspace/console .
 
-RUN set -x \
-    && apk add --upgrade --no-cache \
-        curl
-
 # Avoiding vulnerabilities
 RUN set -x \
     && apk add --upgrade --no-cache apk-tools
