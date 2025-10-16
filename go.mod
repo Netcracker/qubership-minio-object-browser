@@ -41,7 +41,7 @@ require (
 )
 
 require (
-	github.com/golang-jwt/jwt/v4 v4.5.1
+	github.com/golang-jwt/jwt/v4 v4.5.2
 	github.com/minio/pkg/v3 v3.0.29
 )
 

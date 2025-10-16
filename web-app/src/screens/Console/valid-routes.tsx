@@ -157,12 +157,6 @@ export const validRoutes = (
           fsHidden: ldapIsEnabled,
         },
         {
-          name: "OpenID",
-          id: "openID",
-          path: IAM_PAGES.IDP_OPENID_CONFIGURATIONS,
-          icon: <LockOpenIcon />,
-        },
-        {
           name: "LDAP",
           id: "ldap",
           path: IAM_PAGES.IDP_LDAP_CONFIGURATIONS,
