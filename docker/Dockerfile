@@ -7,9 +7,11 @@ RUN apk add --no-cache git
 WORKDIR /workspace
 
 # Clone & build MinIO Object Browser
-RUN git clone --depth=1 --branch v1.7.6 https://github.com/minio/object-browser.git && \
-    cp -f go.mod object-browser/ && \
-    cd object-browser && \
+RUN git clone --depth=1 --branch v1.7.6 https://github.com/minio/object-browser.git
+
+COPY go.mod object-browser/
+
+RUN cd object-browser && \
     go mod edit -go=1.25 -toolchain=go1.25.4 && \
     go mod download && \
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o console ./cmd/console
