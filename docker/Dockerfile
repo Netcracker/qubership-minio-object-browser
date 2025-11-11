@@ -13,6 +13,7 @@ COPY go.mod object-browser/
 
 RUN cd object-browser && \
     go mod edit -go=1.25 -toolchain=go1.25.4 && \
+    go mod tydy && \
     go mod download && \
     CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o console ./cmd/console
 
