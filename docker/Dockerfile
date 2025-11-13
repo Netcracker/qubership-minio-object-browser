@@ -16,7 +16,7 @@ RUN cd object-browser && \
     go mod edit -go=1.25 -toolchain=go1.25.4 && \
     go mod tidy && \
     go mod download && \
-    CGO_ENABLED=0 GOOS=linux GOARCH=amd64 GO111MODULE=on go build -a -o console ./cmd/console
+    CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -o console ./cmd/console
 
 FROM alpine:3.22.2
 
