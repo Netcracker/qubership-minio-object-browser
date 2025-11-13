@@ -12,7 +12,7 @@ RUN git clone --depth=1 --branch v1.7.6 https://github.com/minio/object-browser.
 COPY go.mod object-browser/
 
 RUN cd object-browser && \
-    sed -i '/{name:"OpenID",id:"openID",path:E.zZ.IDP_OPENID_CONFIGURATIONS,icon:(0,d.jsx)(m.fiF,{})},/d' ./web-app/build/static/js/main.45669c2e.js && \
+    sed -i 's/{name:"OpenID",id:"openID",path:E.zZ.IDP_OPENID_CONFIGURATIONS,icon:(0,d.jsx)(m.fiF,{})},//g' ./web-app/build/static/js/main.45669c2e.js && \
     go mod edit -go=1.25 -toolchain=go1.25.4 && \
     go mod tidy && \
     go mod download && \
