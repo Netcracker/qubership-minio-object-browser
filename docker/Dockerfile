@@ -7,7 +7,8 @@ RUN apk add --no-cache git
 WORKDIR /workspace
 
 # Clone & build MinIO Object Browser
-RUN git clone --depth=1 --branch v1.7.6 https://github.com/minio/object-browser.git
+# RUN git clone --depth=1 --branch v1.7.6 https://github.com/minio/object-browser.git
+RUN git clone --depth=1 --branch v1.7.6 https://github.com/OpenMaxIO/openmaxio-object-browser.git
 
 # COPY go.mod object-browser/
 
