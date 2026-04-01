@@ -23,7 +23,7 @@ FROM alpine:3.23.3
 
 WORKDIR /usr/local/bin
 
-COPY --from=builder --chown=1000 /workspace/object-browser/console .
+COPY --from=builder --chown=1000 /workspace/openmaxio-object-browser/console .
 
 # Avoiding vulnerabilities
 RUN set -x \
