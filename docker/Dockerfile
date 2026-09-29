@@ -1,5 +1,5 @@
 # Build the manager binary
-FROM golang:1.26.4-alpine3.24 AS builder
+FROM golang:1.27.1-alpine3.24 AS builder
 
 # Install minimal build deps
 RUN apk add --no-cache git
@@ -14,12 +14,21 @@ RUN git clone --depth=1 --branch v1.7.6 https://github.com/OpenMaxIO/openmaxio-o
 
 RUN cd openmaxio-object-browser && \
     sed -i 's/{name:"OpenID",id:"openID",path:E.zZ.IDP_OPENID_CONFIGURATIONS,icon:(0,d.jsx)(m.fiF,{})},//g' ./web-app/build/static/js/main.45669c2e.js && \
-    go mod edit -go=1.26 -toolchain=go1.26.4 -require=github.com/prometheus/prometheus@v0.313.0-rc.1 -require=golang.org/x/net@v0.56.0 -require=golang.org/x/crypto@v0.53.0 -require=github.com/golang-jwt/jwt/v4@v4.5.2 -require=golang.org/x/oauth2@v0.33.0 -require=google.golang.org/grpc@v1.80.0 && \
+    go mod edit -go=1.27 -toolchain=go1.27.1 \
+      -require=github.com/prometheus/prometheus@v0.313.0-rc.1 \
+      -require=golang.org/x/net@v0.59.0 \
+      -require=golang.org/x/crypto@v0.57.0 \
+      -require=github.com/golang-jwt/jwt/v4@v4.5.2 \
+      -require=golang.org/x/oauth2@v0.37.0 \
+      -require=google.golang.org/grpc@v1.84.0 \
+      -require=github.com/go-openapi/spec@v1.0.1 \
+      -require=github.com/go-openapi/validate@v1.0.0 \
+      -require=github.com/go-openapi/swag@v0.29.2 && \
     go mod tidy && \
     go mod download && \
     CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -a -o console ./cmd/console
 
-FROM alpine:3.24.1
+FROM alpine:3.24.2
 
 WORKDIR /usr/local/bin
 
